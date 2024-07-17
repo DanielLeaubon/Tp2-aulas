@@ -17,7 +17,6 @@ app.post("/resultado",(req,res)=>{
   let T = parseFloat(req.body.tempo)
   let a = parseFloat(req.body.aceleração)
   Valor = `S0 + V*T +(a*(T*T)/2) = ${S0 + V*T +(a*(T*T)/2)}`
-  
 
  
 
@@ -25,8 +24,12 @@ app.post("/resultado",(req,res)=>{
   res.render("index",{Valor})
  })
 
-  
+ app.get("/tudonofront",(req,res)=>{
 
+
+ res.render("rayane")
+  
+ })
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
 });
