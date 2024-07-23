@@ -13,9 +13,9 @@
 <body>
     <form action="/" method="post" id="formzin">
         <label for="">Digite um número</label>
-        <input type="text" name="num1" id="num1">
+        <input type="text" name="num1" id="num1" required>
         <label for="">Digite outro número</label>
-        <input type="text" name="num2" id="num2">
+        <input type="text" name="num2" id="num2" required>
        
         <input type="submit" id ="+" value="+" onclick="mudarrota('/soma')">
         <input type="submit" id="-" value="-" onclick="mudarrota('/sub')">
@@ -24,7 +24,9 @@
        
     </form>
     <label for="">Resultado:</label>
+      <% if(result != Infinity){%>
         <%=result%>
+    <%}
     
 </body>
 </html>
