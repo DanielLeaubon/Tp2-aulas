@@ -7,7 +7,19 @@
     <script>
        function mudarrota(rota) {
         formzin.action = rota
+        let divisor = num2.value
+        if (rota == "/div" && divisor == 0 ){
+            alert('Não se pode dividir com 0')
+            result = ''
+        }
+        else{
+            formzin.submit()
+        }
+        
        }
+       
+   
+   
     </script>
 </head>
 <body>
@@ -19,14 +31,13 @@
        
         <input type="submit" id ="+" value="+" onclick="mudarrota('/soma')">
         <input type="submit" id="-" value="-" onclick="mudarrota('/sub')">
-        <input type="submit" id="/" value="/" onclick="mudarrota('/div')">
+        <input type="button" id="/" value="/" onclick="mudarrota('/div')">
         <input type="submit" id="*" value="*" onclick="mudarrota('/multi')">
        
     </form>
     <label for="">Resultado:</label>
-      <% if(result != Infinity){%>
         <%=result%>
-    <%}
-    
+
+
 </body>
 </html>
