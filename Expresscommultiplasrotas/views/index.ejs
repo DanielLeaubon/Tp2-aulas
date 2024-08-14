@@ -13,7 +13,7 @@
         <label for="">Digite um número</label>
         <input type="text" name="num1" id="num1">
         <label for="">Digite outro número</label>
-        <input type="text" name="num2" id="num2" required>
+        <input type="text" name="num2" id="num2">
 
         <input type="submit" id="+" value="+" onclick="mudarrota('/soma')">
         <input type="submit" id="-" value="-" onclick="mudarrota('/sub')">
@@ -27,16 +27,21 @@
 
     <%-include("rodape")%>
     <script>
-        function mudarrota(rota) {
+          function mudarrota(rota) {
             formzin.action = rota
-            let divisor = num2.value
-            if (rota == "/div" && divisor == 0) {
-                alert('Não se pode dividir com 0')
-                result = ''
+            if (num1.value == '' || num2.value == '') {
+                document.getElementById('resultado').innerHTML = ''
+                alert('Algum valor está vazio')
+            } else {
+                if (rota == "/div" && num2.value == 0) {
+                    document.getElementById('resultado').innerHTML = ''
+                    alert('Não se pode dividir com 0')
+                } else {
+                    formzin.submit()
+                }
             }
-            else {
-                formzin.submit()
-            }
+
+
         }
     </script>
 </body>
