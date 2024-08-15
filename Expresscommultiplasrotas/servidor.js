@@ -55,6 +55,7 @@ app.route("/div")
         result = n1 + n2
         res.render('index', { result })
     })
+    //fiufiu
 
 app.listen(port, () => {
     console.log(`Servidor funcionando na porta: ${port}`);
