@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadorazinha</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-<body>
-        <form action="/" method="post" id="formzin">
+  <body>
+    <main id="calculadora">
+      <%-include("cabecalho")%> <%-include("menu")%>
+      <form action="/" method="post" id="formzin">
         <label for="">Digite um número</label>
-        <input type="text" name="num1" id="num1">
+        <input type="text" name="num1" id="num1"/>
         <label for="">Digite outro número</label>
-        <input type="text" name="num2" id="num2">
+        <input type="text" name="num2" id="num2"/>
 
-        <input type="submit" id="+" value="+" onclick="mudarrota('/soma')">
-        <input type="submit" id="-" value="-" onclick="mudarrota('/sub')">
-        <input type="button" id="/" value="/" onclick="mudarrota('/div')">
-        <input type="submit" id="*" value="*" onclick="mudarrota('/multi')">
+        <input type="button" id="+" value="+" onclick="mudarrota('/soma')" />
+        <input type="button" id="-" value="-" onclick="mudarrota('/sub')" />
+        <input type="button" id="/" value="/" onclick="mudarrota('/div')" />
+        <input type="button" id="*" value="*" onclick="mudarrota('/multi')" />
+      </form>
+      <label for="">Resultado:</label>
+      <%=result%> 
+      <%-include("rodape")%>
+    </main>
 
-
-    </form>
-    <label for="">Resultado:</label>
-    <%=result%>
-
-    <%-include("rodape")%>
     <script>
-          function mudarrota(rota) {
-            formzin.action = rota
-            if (num1.value == '' || num2.value == '') {
-                document.getElementById('resultado').innerHTML = ''
-                alert('Algum valor está vazio')
-            } else {
-                if (rota == "/div" && num2.value == 0) {
-                    document.getElementById('resultado').innerHTML = ''
-                    alert('Não se pode dividir com 0')
-                } else {
-                    formzin.submit()
-                }
-            }
-
-
-        }
+      function mudarrota(rota) {
+        formzin.action = rota;
+      if (num1.value == "" || num2.value == "") {
+        alert("Algum valor está vazio");
+      } else {
+          formzin.submit();
+      }
+    }
+      
     </script>
-</body>
-
+  </body>
 </html>
