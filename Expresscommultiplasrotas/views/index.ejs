@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadorazinha</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
 
-  <body>
-    <main id="calculadora">
-      <%-include("cabecalho")%> <%-include("menu")%>
-      <form action="/" method="post" id="formzin">
-        <label for="">Digite um número</label>
-        <input type="text" name="num1" id="num1"/>
-        <label for="">Digite outro número</label>
-        <input type="text" name="num2" id="num2"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadorazinha</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-        <input type="button" id="+" value="+" onclick="mudarrota('/soma')" />
-        <input type="button" id="-" value="-" onclick="mudarrota('/sub')" />
-        <input type="button" id="/" value="/" onclick="mudarrota('/div')" />
-        <input type="button" id="*" value="*" onclick="mudarrota('/multi')" />
-      </form>
-      <label for="">Resultado:</label>
-      <%=result%> 
-      <%-include("rodape")%>
-    </main>
+<body>
+  <main id="calculadora">
+    <%-include("cabecalho")%> <%-include("menu")%>
+        <form action="/" method="post" id="formzin">
+          <input type="text" name="num1" id="num1" placeholder="Primeiro digito" /><br>
+          <input type="text" name="num2" id="num2" placeholder="Segundo digito" /><br>
 
-    <script>
-      function mudarrota(rota) {
-        formzin.action = rota;
+          <input type="button" id="+" value="+" onclick="mudarrota('/soma')" />
+          <input type="button" id="-" value="-" onclick="mudarrota('/sub')" />
+          <input type="button" id="/" value="/" onclick="mudarrota('/div')" />
+          <input type="button" id="*" value="*" onclick="mudarrota('/multi')" />
+
+          <p id="resultDisplay">re
+            <%=result%>
+          </p>
+        </form>
+        <%-include("rodape")%>
+  </main>
+
+  <script>
+    function mudarrota(rota) {
+      formzin.action = rota;
       if (num1.value == "" || num2.value == "") {
         alert("Algum valor está vazio");
       } else {
-          formzin.submit();
+        formzin.submit();
       }
     }
-      
-    </script>
-  </body>
+
+  </script>
+</body>
+
 </html>
