@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
 app.route("/erro").get((req, res) => {
   res.render("erro");
 });
+
 app
   .route("/soma")
   .get((req, res) => {
@@ -21,24 +22,13 @@ app
   .post((req, res) => {
     n1 = parseFloat(req.body.num1);
     n2 = parseFloat(req.body.num2);
-      result = n1 + n2;
-      res.render("index", { result });
 
-  });
-
-app
-  .route("/multi")
-  .get((req, res) => {
-    res.redirect("/");
-  })
-  .post((req, res) => {
-    n1 = parseFloat(req.body.num1);
-    n2 = parseFloat(req.body.num2);
-    if (n1 == NaN || n1 == "" || n2 == NaN || n2 == "") {
+    if (isNaN(n1) || isNaN(n2)) {
+      result = `Digite apenas números`
       res.redirect("/erro");
     } else {
-      result = n1 * n2;
-      res.render("index", { result });
+      result = n1 + n2;
+      res.render("index");
     }
   });
 
@@ -50,11 +40,30 @@ app
   .post((req, res) => {
     n1 = parseFloat(req.body.num1);
     n2 = parseFloat(req.body.num2);
-    if (n1 == NaN || n1 == "" || n2 == NaN || n2 == "") {
+    if (isNaN(n1) || isNaN(n2)) {
+      result = `Digite apenas números`
       res.redirect("/erro");
     } else {
       result = n1 - n2;
-      res.render("index", { result });
+      res.render("index");
+    }
+  });
+
+app
+  .route("/mult")
+  .get((req, res) => {
+    res.redirect("/");
+  })
+  .post((req, res) => {
+    n1 = parseFloat(req.body.num1);
+    n2 = parseFloat(req.body.num2);
+
+    if (isNaN(n1) || isNaN(n2)) {
+      result = `Digite apenas números`
+      res.redirect("/erro");
+    } else {
+      result = n1 * n2;
+      res.render("index");
     }
   });
 
@@ -67,11 +76,18 @@ app
     n1 = parseFloat(req.body.num1);
     n2 = parseFloat(req.body.num2);
     console.log(n1, n2);
-    if (isNaN(n1) || n1 == "" || isNaN(n2) || n2 == "" || n2 == 0) {
+
+    if (isNaN(n1) || isNaN(n2)) {
+      result = `Digite apenas números`
       res.redirect("/erro");
-    } else {
+    }
+    else if (n2 == 0) {
+      result = `Nenhum número pode ser dividido por 0`
+      res.redirect("/erro");
+    }
+    else {
       result = n1 / n2;
-      res.render("index", { result });
+      res.render("index");
     }
   });
 
